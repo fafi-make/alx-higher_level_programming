@@ -1,120 +1,121 @@
+
 #!/usr/bin/python3
-"""Defines a class Square"""
+"""Module containing the Square class"""
 
 
 class Square:
-    """Represents a square
-
-    Attributes:
-        __size (int): size of a side of the square
-    """
+    """The Square class"""
     def __init__(self, size=0):
-        """initializes the square
-
+        """Initializing an instance of Square
         Args:
-            size (int): size of a side of the square
-
-        Returns:
-            None
+            size (int): The size of the Square instance. Default value is 0.
         """
         self.size = size
 
-    def area(self):
-        """calculates the square's area
-
-        Returns:
-            The area of the square
-        """
-        return (self.__size) ** 2
-
     @property
     def size(self):
-        """getter of __size
-
-        Returns:
-            The size of the square
-        """
+        """int: size of the Square instance"""
         return self.__size
 
     @size.setter
-    def size(self, value):
-        """setter of __size
-
-        Args:
-            value (int): the size of a size of the square
-
-        Returns:
-            None
-        """
-        if type(value) is not int:
+    def size(self, size):
+        if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        else:
-            if value < 0:
-                raise ValueError("size must be >= 0")
-            else:
-                self.__size = value
+        if size < 0:
+            raise ValueError("size must be >= 0")
 
-    def __lt__(self, other):
-        """Compare if square is less than another by area
+        self.__size = size
 
-        Args:
-            other (Square): square to compare against
+    def area(self):
+        """Returns the current square area of the instance
         Returns:
-            True or False
+            int: The square of size
         """
-        return self.size < other.size
-
-    def __le__(self, other):
-        """Compare if square is less than or equal to another by area
-
-        Args:
-            other (Square): square to compare against
-
-        Returns:
-            True or False
-        """
-        return self.size <= other.size
+        return self.__size ** 2
 
     def __eq__(self, other):
-        """Compare if square is equal to another by area
-
-        Args:
-            other (Square): square to compare against
-
+        """Check if the area of the instance is the same as the area of 'other'.
         Returns:
-            True or False
+            bool: The return Value. True if self.area == other.area. False
+                otherwise, or 'other' is not of type Square.
         """
-        return self.size == other.size
+        if isinstance(other, Square):
+            if self.area() == other.area():
+                return True
+            else:
+                return False
+        else:
+            return False
 
     def __ne__(self, other):
-        """Compare if square is not equal to another by area
-
-        Args:
-            other (Square): square to compare against
-
+        """Check if the area of the instance is not the same as the area of
+            'other'.
         Returns:
-            True or False
+            bool: The return Value. True if self.area != other.area. False
+                otherwise, or 'other' is not of type Square.
         """
-        return self.size != other.size
-
-    def __ge__(self, other):
-        """Compare if square is greater than or equal to another by area
-
-        Args:
-            other (Square): square to compare against
-
-        Returns:
-            True or False
-        """
-        return self.size >= other.size
+        if isinstance(other, Square):
+            if self.area() != other.area():
+                return True
+            else:
+                return False
+        else:
+            return False
 
     def __gt__(self, other):
-        """Compare if square is greater than another by area
-
-        Args:
-            other (Square): square to compare against
-
+        """Check if the area of the instance is greater than the area of 'other'.
         Returns:
-            True or False
+            bool: The return Value. True if self.area > other.area. False
+                otherwise, or 'other' is not of type Square.
         """
-        return self.size > other.size
+        if isinstance(other, Square):
+            if self.area() > other.area():
+                return True
+            else:
+                return False
+        else:
+            return False
+
+    def __ge__(self, other):
+        """Check if the area of the instance is greater than or equal to the
+            area of 'other'.
+        Returns:
+            bool: The return Value. True if self.area >= other.area. False
+                otherwise, or 'other' is not of type Square.
+        """
+        if isinstance(other, Square):
+            if self.area() >= other.area():
+                return True
+            else:
+                return False
+        else:
+            return False
+
+    def __lt__(self, other):
+        """Check if the area of the instance is less than the area of 'other'.
+        Returns:
+            bool: The return Value. True if self.area < other.area. False
+                otherwise, or 'other' is not of type Square.
+        """
+        if isinstance(other, Square):
+            if self.area() < other.area():
+                return True
+            else:
+                return False
+        else:
+            return False
+
+    def __le__(self, other):
+        """Check if the area of the instance is less than or equal to the area
+            of 'other'.
+        Returns:
+            bool: The return Value. True if self.area <= other.area. False
+                otherwise, or 'other' is not of type Square.
+        """
+        if isinstance(other, Square):
+            if self.area() <= other.area():
+                return True
+            else:
+                return False
+        else:
+            return False
