@@ -1,3 +1,3 @@
 #!/usr/bin/node
-const threeLines = 'C is fun\n' + 'Python is cool\n' + 'Javascript is amazing';
-console.log(threeLines);
+// A script to print 3 lines.
+console.log('C is fun\nPython is cool\nJavascript is amazing');
