@@ -1,9 +1,19 @@
 #!/usr/bin/python3
-"""Script that fetches https://intranet.hbtn.io/status"""
+""" Fetches https://intranet.hbtn.io/status"""
 import requests
-if __name__ == "__main__":
-    page = requests.get('https://intranet.hbtn.io/status')
-    page_content = page.text
-    print("Body response:")
-    print("\t- type: {}".format(type(page_content)))
-    print("\t- content: {}".format(page_content))
+from requests.auth import HTTPBasicAuth
+from sys import argv
+
+
+if __name__ == '__main__':
+    url = 'https://api.github.com/user'
+    username, token = argv[1:]
+
+    s = requests.Session()
+
+    data = {'username': username, 'token': token}
+    response = s.get(url, auth=(username, token)).json()
+    try:
+        print(response['id'])
+    except:
+        print('None')
